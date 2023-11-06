@@ -1,15 +1,21 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
+        jcenter()
         google()
         mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven { url uri('./repo') }
     }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
+        jcenter()
         mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven { url uri('./repo') }
     }
 }
 rootProject.name = "WanAndroid"

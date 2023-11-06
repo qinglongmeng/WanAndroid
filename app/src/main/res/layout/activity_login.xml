@@ -1,7 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+        <variable
+            name="login_view_model"
+            type="com.example.wanandroid.user.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:hint="@string/user_hint"
+            app:layout_constraintTop_toTopOf="parent"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/red">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/name_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="@={login_view_model.userName}"
+                binding:afterTextChanged="@{login_view_model.verifyInput}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:hint="@string/password_hint"
+            app:layout_constraintTop_toBottomOf="@+id/user_name"
+            app:passwordToggleEnabled="true"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/red">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/password_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:text="@={login_view_model.password}"
+                binding:afterTextChanged="@{login_view_model.verifyInput}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/password"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/login"
+            android:textSize="16sp"
+            android:enabled="@{login_view_model.loginStatus.enableLoginButton}"
+            android:onClick="@{() -> login_view_model.login()}"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/login"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/register"
+            android:textSize="16sp"
+            android:enabled="@{login_view_model.loginStatus.enableLoginButton}"
+            android:onClick="@{() -> login_view_model.register()}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

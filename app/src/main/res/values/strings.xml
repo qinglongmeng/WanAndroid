@@ -3,4 +3,11 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <!--Login-->
+    <string name="user_hint">用户名</string>
+    <string name="password_hint">密码</string>
+    <string name="login">登陆</string>
+    <string name="register">注册</string>
+
 </resources>
