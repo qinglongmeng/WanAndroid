@@ -26,7 +26,10 @@ class LoginViewModel : BaseViewModel() {
 
     fun register() {
         launchOnUi {
-
+            LoginRepository().registerFlow(userName.get() ?: "", password.get() ?: "")
+                .collect{
+                    loginStatus.postValue(it)
+                }
         }
     }
 
