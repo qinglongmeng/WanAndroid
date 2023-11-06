@@ -15,4 +15,13 @@ class App : Application() {
         var CONTEXT: Context by Delegates.notNull()
         lateinit var CURRENT_USER: User
     }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        CONTEXT = applicationContext
+    }
 }

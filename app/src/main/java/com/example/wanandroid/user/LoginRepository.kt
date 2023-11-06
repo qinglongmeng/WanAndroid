@@ -1,5 +1,6 @@
 package com.example.wanandroid.user
 
+import com.example.wanandroid.App
 import com.example.wanandroid.api.WanRetrofitClient
 import com.example.wanandroid.bean.User
 import com.example.wanandroid.bean.doError
@@ -26,6 +27,7 @@ open class LoginRepository {
 
         WanRetrofitClient.service.login(userName, passWord).doSuccess { user ->
             emit(LoginState(isSuccess = user, enableLoginButton = true))
+            App.CURRENT_USER = user
         }.doError { errorMsg ->
             emit(LoginState(isError = errorMsg, enableLoginButton = true))
         }

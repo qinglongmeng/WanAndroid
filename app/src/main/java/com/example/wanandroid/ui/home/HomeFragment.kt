@@ -17,7 +17,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        dataBinding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater, R.layout.fragment_notifications, container, false).apply {
+        dataBinding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater, R.layout.fragment_home, container, false).apply {
             lifecycleOwner = this@HomeFragment
         }
         return dataBinding.root
