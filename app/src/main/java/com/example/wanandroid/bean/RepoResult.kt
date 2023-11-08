@@ -1,9 +1,9 @@
 package com.example.wanandroid.bean
 
-sealed class Result<out T : Any> {
+sealed class RepoResult<out T : Any> {
 
-    data class Success<out T : Any>(val data: T) : Result<T>()
-    data class Error(val exception: Exception) : Result<Nothing>()
+    data class Success<out T : Any>(val data: T) : RepoResult<T>()
+    data class Error(val exception: Exception) : RepoResult<Nothing>()
 
     override fun toString(): String {
         return when (this) {

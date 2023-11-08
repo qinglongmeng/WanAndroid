@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="Article"
+            type="com.example.wanandroid.bean.Article" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/articleImg"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:src="@mipmap/home_hot"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/articleAuthor"
+            style="@style/Article_text"
+            android:text="@{Article.author, default = 小孟}"
+            app:layout_constraintBottom_toBottomOf="@+id/articleImg"
+            app:layout_constraintLeft_toRightOf="@+id/articleImg"
+            app:layout_constraintTop_toTopOf="@+id/articleImg" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/articleTag"
+            style="@style/Article_text"
+            android:layout_marginStart="15dp"
+            android:text="@{Article.superChapterName+`/`+Article.chapterName}"
+            app:layout_constraintBottom_toBottomOf="@id/articleAuthor"
+            app:layout_constraintLeft_toRightOf="@id/articleAuthor"
+            app:layout_constraintTop_toTopOf="@id/articleAuthor" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/articleTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="8dp"
+            android:textColor="#1c1c1e"
+            android:textSize="16sp"
+            android:text="@{Article.title, default = Android博文}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/articleAuthor" />
+
+        <ImageView
+            android:id="@+id/articleAuthorImg"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:src="@mipmap/ic_time"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/articleTitle" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/articleTime"
+            style="@style/Article_text"
+            android:text="@{Article.niceDate, default = 一小时前}"
+            app:layout_constraintBottom_toBottomOf="@id/articleAuthorImg"
+            app:layout_constraintLeft_toRightOf="@+id/articleAuthorImg"
+            app:layout_constraintTop_toTopOf="@id/articleAuthorImg" />
+
+        <ImageView
+            android:id="@+id/articleStar"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:clickable="true"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:src="@mipmap/timeline_like_normal"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toBottomOf="@id/articleTime"
+            app:layout_constraintLeft_toRightOf="@+id/articleTime"
+            app:layout_constraintTop_toTopOf="@id/articleTime" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
