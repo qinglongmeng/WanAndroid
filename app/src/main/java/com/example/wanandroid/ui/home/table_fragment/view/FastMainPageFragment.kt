@@ -1,16 +1,16 @@
 package com.example.wanandroid.ui.home.table_fragment.view
 
-import androidx.fragment.app.viewModels
 import com.example.wanandroid.BaseVMFragment
 import com.example.wanandroid.R
 import com.example.wanandroid.databinding.FragmentFastMainPageBinding
 import com.example.wanandroid.ui.home.table_fragment.adapter.HomeArticleAdapter
 import com.example.wanandroid.ui.home.table_fragment.model.FastMainPageViewModel
 import com.example.wanandroid.util.toast
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FastMainPageFragment : BaseVMFragment<FragmentFastMainPageBinding>(R.layout.fragment_fast_main_page) {
 
-    private val fastMainViewModel by viewModels<FastMainPageViewModel>()
+    private val fastMainViewModel by viewModel<FastMainPageViewModel>()
     private val homeArticleAdapter by lazy { HomeArticleAdapter() }
 
     override fun initView() {
@@ -22,7 +22,7 @@ class FastMainPageFragment : BaseVMFragment<FragmentFastMainPageBinding>(R.layou
     }
 
     private fun initRecycleView() {
-        
+
     }
 
     override fun initData() {

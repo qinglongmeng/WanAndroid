@@ -10,9 +10,8 @@ import com.example.wanandroid.ui.home.table_fragment.repo.FastHomeRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FastMainPageViewModel: BaseViewModel() {
+class FastMainPageViewModel(private val homeRepository: FastHomeRepository) : BaseViewModel() {
 
-    private val homeRepository: FastHomeRepository = FastHomeRepository()
     private var currentPage = 0
     val status = MutableLiveData<ArticleUiStates>()
     val banner = MutableLiveData<Banners>()
@@ -53,7 +52,7 @@ class FastMainPageViewModel: BaseViewModel() {
         status.value = uiModel
     }
 
-    val refreshHome: ()-> Unit = {getHomeArticleList(true)}
+    val refreshHome: () -> Unit = { getHomeArticleList(true) }
 
     /**
      * 状态
